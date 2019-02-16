@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">DataBindingDemo</string>
+    <string name="sex_man">男</string>
+    <string name="sex_woman">女</string>
+    <string name="name">姓名：%1$s</string>
+    <string name="sex">性别：%1$s</string>
+    <string name="age">年龄：%1$s</string>
+
+    <string name="data_binding">数据绑定</string>
+</resources>
