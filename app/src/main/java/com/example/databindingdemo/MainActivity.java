@@ -2,8 +2,6 @@ package com.example.databindingdemo;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.databinding.ObservableField;
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -24,9 +22,24 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.tvInfo.setText("我是使用Data Binding的Demo");
         binding.setActivity(this);
+        binding.tvInfo.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                return false;
+            }
+        });
     }
 
-    public void userClick(View view){
+    public void userClick(View view) {
         startActivity(new Intent(this, UserActivity.class));
+    }
+
+    public void startList() {
+        startActivity(new Intent(this, ListActivity.class));
+    }
+
+    public boolean listLongClick() {
+        //长按操作
+        return true;
     }
 }

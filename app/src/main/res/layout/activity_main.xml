@@ -30,5 +30,14 @@
             android:layout_height="wrap_content"
             android:onClick="@{activity::userClick}"
             android:text="@string/data_binding" />
+        <Button
+            android:id="@+id/btn_list"
+            app:layout_constraintTop_toBottomOf="@+id/tv_info"
+            app:layout_constraintLeft_toRightOf="@+id/btn_binding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->activity.startList()}"
+            android:onLongClick="@{()->activity.listLongClick()}"
+            android:text="@string/list_binding" />
     </android.support.constraint.ConstraintLayout>
 </layout>
