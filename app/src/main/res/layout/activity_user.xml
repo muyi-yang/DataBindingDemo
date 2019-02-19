@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
         <import type="com.example.databindingdemo.bean.UserInfo" />
+
+        <import type="android.view.View" />
+
+        <import
+            alias="Vista"
+            type="com.example.databindingdemo.bean.View" />
 
         <variable
             name="user"
@@ -15,7 +22,7 @@
 
         <variable
             name="activity"
-            type="com.example.databindingdemo.UserActivity"/>
+            type="com.example.databindingdemo.UserActivity" />
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -93,11 +100,22 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_colleague" />
 
         <Button
+            android:id="@+id/btn_show_sign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{(view)->view.isEnabled()?activity.showSign(view, user):void}"
             android:onLongClick="@{(v)->v.isEnabled()?activity.showSign(user):false}"
-            app:layout_constraintTop_toBottomOf="@+id/tv_task"
-            android:text="@string/show_sign"/>
+            android:text="@string/show_sign"
+            app:layout_constraintTop_toBottomOf="@+id/tv_task" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary"
+            android:visibility="@{Vista.isShow?View.VISIBLE:View.GONE}"
+            app:layout_constraintTop_toBottomOf="@+id/btn_show_sign" />
+
+        <include layout="@layout/layout_avatar"
+            bind:resId="@{user.avatarId}"/>
     </android.support.constraint.ConstraintLayout>
 </layout>

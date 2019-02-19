@@ -14,6 +14,7 @@ public class UserInfo {
     public int age;
     public int sex;
     public String sign;
+    public int avatarId;
 
     public String[] tripMode={"公交车","地铁","开车"};
     public List<String> colleague = new ArrayList<>();

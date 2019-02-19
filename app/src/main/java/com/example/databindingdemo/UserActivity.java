@@ -28,6 +28,7 @@ public class UserActivity extends AppCompatActivity {
         info.age = 28;
         info.sex = 1;
         info.sign = "问君能有几多愁，恰似一杯二锅头";
+        info.avatarId = R.drawable.head;
         binding.setUser(info);
 
         binding.setIndex(1);
