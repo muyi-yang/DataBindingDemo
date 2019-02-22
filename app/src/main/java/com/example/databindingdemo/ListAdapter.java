@@ -19,6 +19,7 @@ import java.util.List;
 public class ListAdapter extends RecyclerView.Adapter {
 
     private List<CelebrityInfo> data = new ArrayList<>();
+    private MyItemClickListener itemClickListener;
 
     @NonNull
     @Override
@@ -32,6 +33,7 @@ public class ListAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         MyViewHolder holder = (MyViewHolder) viewHolder;
+        holder.setItemClickListener(itemClickListener);
         holder.binding.setInfo(data.get(i));
     }
 
@@ -45,13 +47,33 @@ public class ListAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public void setItemClickListener(MyItemClickListener listener) {
+        itemClickListener = listener;
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private LayoutCelebrityItemBinding binding;
+        private MyItemClickListener itemClickListener;
 
         public MyViewHolder(@NonNull View itemView, LayoutCelebrityItemBinding binding) {
             super(itemView);
             this.binding = binding;
+            itemView.setOnClickListener(this);
         }
+
+        public void setItemClickListener(MyItemClickListener listener) {
+            itemClickListener = listener;
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getLayoutPosition();
+            itemClickListener.onItemClick(v, position, data.get(position));
+        }
+    }
+
+    public interface MyItemClickListener {
+        void onItemClick(View v, int position, CelebrityInfo info);
     }
 }

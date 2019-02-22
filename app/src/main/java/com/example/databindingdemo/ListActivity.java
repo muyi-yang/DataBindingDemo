@@ -1,9 +1,12 @@
 package com.example.databindingdemo;
 
 import android.databinding.DataBindingUtil;
+import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.example.databindingdemo.bean.CelebrityInfo;
 import com.example.databindingdemo.databinding.ActivityListBinding;
@@ -20,6 +23,9 @@ public class ListActivity extends AppCompatActivity {
     private ActivityListBinding binding;
     private ListAdapter adapter;
 
+    public final ObservableField<String> name = new ObservableField<>();
+    public final ObservableInt index = new ObservableInt();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,48 +37,55 @@ public class ListActivity extends AppCompatActivity {
         binding.setAdapter(adapter);
 
         adapter.setData(getCelebrityList());
+        adapter.setItemClickListener(new ListAdapter.MyItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position, CelebrityInfo info) {
+                name.set(info.getName());
+                index.set(position);
+            }
+        });
     }
 
     private List<CelebrityInfo> getCelebrityList() {
         List<CelebrityInfo> list = new ArrayList<>();
         CelebrityInfo brock = new CelebrityInfo();
-        brock.name.set("布洛克·莱斯纳");
-        brock.weight.set(130);
-        brock.isRetire.set(false);
-        brock.income.set(1000);
-        brock.photo.set(R.drawable.brock);
+        brock.setName("布洛克·莱斯纳");
+        brock.setWeight(130);
+        brock.setRetire(false);
+        brock.setIncome(1000);
+        brock.setPhoto(R.drawable.brock);
         list.add(brock);
 
         CelebrityInfo dwayne = new CelebrityInfo();
-        dwayne.name.set("巨石·强森");
-        dwayne.weight.set(115);
-        dwayne.isRetire.set(true);
-        dwayne.income.set(2000);
-        dwayne.photo.set(R.drawable.dwayne);
+        dwayne.setName("巨石·强森");
+        dwayne.setWeight(115);
+        dwayne.setRetire(true);
+        dwayne.setIncome(2000);
+        dwayne.setPhoto(R.drawable.dwayne);
         list.add(dwayne);
 
         CelebrityInfo john = new CelebrityInfo();
-        john.name.set("约翰·塞纳");
-        john.weight.set(114);
-        john.isRetire.set(true);
-        john.income.set(1000);
-        john.photo.set(R.drawable.john);
+        john.setName("约翰·塞纳");
+        john.setWeight(114);
+        john.setRetire(true);
+        john.setIncome(1000);
+        john.setPhoto(R.drawable.john);
         list.add(john);
 
         CelebrityInfo randy = new CelebrityInfo();
-        randy.name.set("兰迪·奥顿");
-        randy.weight.set(111);
-        randy.isRetire.set(false);
-        randy.income.set(999);
-        randy.photo.set(R.drawable.randy);
+        randy.setName("兰迪·奥顿");
+        randy.setWeight(111);
+        randy.setRetire(false);
+        randy.setIncome(999);
+        randy.setPhoto(R.drawable.randy);
         list.add(randy);
 
         CelebrityInfo roman = new CelebrityInfo();
-        roman.name.set("罗曼·雷恩斯");
-        roman.weight.set(120);
-        roman.isRetire.set(false);
-        roman.income.set(800);
-        roman.photo.set(R.drawable.roman);
+        roman.setName("罗曼·雷恩斯");
+        roman.setWeight(120);
+        roman.setRetire(false);
+        roman.setIncome(800);
+        roman.setPhoto(R.drawable.roman);
         list.add(roman);
         return list;
     }

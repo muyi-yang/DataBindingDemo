@@ -17,4 +17,5 @@
     <string name="tour">状态:正服役</string>
     <string name="income">收入$:%1$s</string>
     <string name="weight">重量:%1$dKG</string>
+    <string name="click_info">点击了:%1$s, 位置:%2$d</string>
 </resources>
