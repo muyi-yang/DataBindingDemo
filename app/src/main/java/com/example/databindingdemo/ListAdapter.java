@@ -1,5 +1,7 @@
 package com.example.databindingdemo;
 
+import android.databinding.ObservableArrayList;
+import android.databinding.ObservableList;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,16 +11,13 @@ import android.view.ViewGroup;
 import com.example.databindingdemo.bean.CelebrityInfo;
 import com.example.databindingdemo.databinding.LayoutCelebrityItemBinding;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author yanglijun
  * @date 19-2-22
  */
 public class ListAdapter extends RecyclerView.Adapter {
 
-    private List<CelebrityInfo> data = new ArrayList<>();
+    private ObservableArrayList<CelebrityInfo> data = null;
     private MyItemClickListener itemClickListener;
 
     @NonNull
@@ -39,12 +38,39 @@ public class ListAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return data == null ? 0 : data.size();
     }
 
-    public void setData(List<CelebrityInfo> list) {
-        data.addAll(list);
-        notifyDataSetChanged();
+    public void setData(ObservableArrayList<CelebrityInfo> list) {
+        data = list;
+        if (data != null) {
+            data.addOnListChangedCallback(new ObservableList.OnListChangedCallback<ObservableList<CelebrityInfo>>() {
+                @Override
+                public void onChanged(ObservableList<CelebrityInfo> sender) {
+                    notifyDataSetChanged();
+                }
+
+                @Override
+                public void onItemRangeChanged(ObservableList<CelebrityInfo> sender, int positionStart, int itemCount) {
+                    notifyItemRangeChanged(positionStart, itemCount);
+                }
+
+                @Override
+                public void onItemRangeInserted(ObservableList<CelebrityInfo> sender, int positionStart, int itemCount) {
+                    notifyItemRangeInserted(positionStart, itemCount);
+                }
+
+                @Override
+                public void onItemRangeMoved(ObservableList<CelebrityInfo> sender, int fromPosition, int toPosition, int itemCount) {
+                    notifyItemMoved(fromPosition, toPosition);
+                }
+
+                @Override
+                public void onItemRangeRemoved(ObservableList<CelebrityInfo> sender, int positionStart, int itemCount) {
+                    notifyItemRangeRemoved(positionStart, itemCount);
+                }
+            });
+        }
     }
 
     public void setItemClickListener(MyItemClickListener listener) {

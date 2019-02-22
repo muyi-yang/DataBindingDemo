@@ -1,18 +1,17 @@
 package com.example.databindingdemo;
 
 import android.databinding.DataBindingUtil;
+import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.databindingdemo.bean.CelebrityInfo;
 import com.example.databindingdemo.databinding.ActivityListBinding;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author yanglijun
@@ -22,6 +21,8 @@ public class ListActivity extends AppCompatActivity {
 
     private ActivityListBinding binding;
     private ListAdapter adapter;
+
+    private ObservableArrayList<CelebrityInfo> listData = new ObservableArrayList<>();
 
     public final ObservableField<String> name = new ObservableField<>();
     public final ObservableInt index = new ObservableInt();
@@ -36,7 +37,7 @@ public class ListActivity extends AppCompatActivity {
         adapter = new ListAdapter();
         binding.setAdapter(adapter);
 
-        adapter.setData(getCelebrityList());
+        adapter.setData(listData);
         adapter.setItemClickListener(new ListAdapter.MyItemClickListener() {
             @Override
             public void onItemClick(View v, int position, CelebrityInfo info) {
@@ -44,17 +45,23 @@ public class ListActivity extends AppCompatActivity {
                 index.set(position);
             }
         });
+
+        getCelebrityList();
     }
 
-    private List<CelebrityInfo> getCelebrityList() {
-        List<CelebrityInfo> list = new ArrayList<>();
-        CelebrityInfo brock = new CelebrityInfo();
-        brock.setName("布洛克·莱斯纳");
-        brock.setWeight(130);
-        brock.setRetire(false);
-        brock.setIncome(1000);
-        brock.setPhoto(R.drawable.brock);
-        list.add(brock);
+    private void getCelebrityList() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                CelebrityInfo brock = new CelebrityInfo();
+                brock.setName("布洛克·莱斯纳");
+                brock.setWeight(130);
+                brock.setRetire(false);
+                brock.setIncome(1000);
+                brock.setPhoto(R.drawable.brock);
+                listData.add(1, brock);
+            }
+        }, 2000);
 
         CelebrityInfo dwayne = new CelebrityInfo();
         dwayne.setName("巨石·强森");
@@ -62,7 +69,7 @@ public class ListActivity extends AppCompatActivity {
         dwayne.setRetire(true);
         dwayne.setIncome(2000);
         dwayne.setPhoto(R.drawable.dwayne);
-        list.add(dwayne);
+        listData.add(dwayne);
 
         CelebrityInfo john = new CelebrityInfo();
         john.setName("约翰·塞纳");
@@ -70,7 +77,7 @@ public class ListActivity extends AppCompatActivity {
         john.setRetire(true);
         john.setIncome(1000);
         john.setPhoto(R.drawable.john);
-        list.add(john);
+        listData.add(john);
 
         CelebrityInfo randy = new CelebrityInfo();
         randy.setName("兰迪·奥顿");
@@ -78,7 +85,7 @@ public class ListActivity extends AppCompatActivity {
         randy.setRetire(false);
         randy.setIncome(999);
         randy.setPhoto(R.drawable.randy);
-        list.add(randy);
+        listData.add(randy);
 
         CelebrityInfo roman = new CelebrityInfo();
         roman.setName("罗曼·雷恩斯");
@@ -86,7 +93,6 @@ public class ListActivity extends AppCompatActivity {
         roman.setRetire(false);
         roman.setIncome(800);
         roman.setPhoto(R.drawable.roman);
-        list.add(roman);
-        return list;
+        listData.add(roman);
     }
 }
