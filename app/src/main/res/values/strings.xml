@@ -2,6 +2,13 @@
     <string name="app_name">DataBindingDemo</string>
     <string name="sex_man">男</string>
     <string name="sex_woman">女</string>
+    <string name="default_name">姓名</string>
+    <string name="default_sex">性别</string>
+    <string name="default_age">年龄</string>
+    <string name="default_sign">个性签名</string>
+    <string name="default_trip">上班出行方式</string>
+    <string name="default_colleague">身边的同事</string>
+    <string name="default_task">今天任务</string>
     <string name="name">姓名：%1$s</string>
     <string name="sex">性别：%1$s</string>
     <string name="age">年龄：%1$s</string>
@@ -18,4 +25,5 @@
     <string name="income">收入$:%1$s</string>
     <string name="weight">重量:%1$dKG</string>
     <string name="click_info">点击了:%1$s, 位置:%2$d</string>
+    <string name="list_size">列表大小:%1$d</string>
 </resources>

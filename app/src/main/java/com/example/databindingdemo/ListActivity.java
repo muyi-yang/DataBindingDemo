@@ -22,7 +22,7 @@ public class ListActivity extends AppCompatActivity {
     private ActivityListBinding binding;
     private ListAdapter adapter;
 
-    private ObservableArrayList<CelebrityInfo> listData = new ObservableArrayList<>();
+    public final ObservableArrayList<CelebrityInfo> listData = new ObservableArrayList<>();
 
     public final ObservableField<String> name = new ObservableField<>();
     public final ObservableInt index = new ObservableInt();

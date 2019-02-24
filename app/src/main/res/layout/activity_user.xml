@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:padding="@{@dimen/view_margin}"
-            android:text="@{@string/name(user.name), default=姓名}"
+            android:text="@{@string/name(user.name), default=@string/default_name}"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@{@string/age(String.valueOf(user.age)), default=年龄}"
+            android:text="@{@string/age(String.valueOf(user.age)), default=@string/default_age}"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_name" />
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@{@string/sex(user.sex == 1?@string/sex_man:@string/sex_woman), default=性别}"
+            android:text="@{@string/sex(user.sex == 1?@string/sex_man:@string/sex_woman), default=@string/default_sex}"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_age" />
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@{user.sign, default=个性签名}"
+            android:text="@{user.sign, default=@string/default_sign}"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_sex" />
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@{@string/trip(user.tripMode[index]), default=上班出行方式}"
+            android:text="@{@string/trip(user.tripMode[index]), default=@string/default_trip}"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_sign" />
@@ -84,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@{@string/colleague(user.colleague[index]), default=身边的同事}"
+            android:text="@{@string/colleague(user.colleague[index]), default=@string/default_colleague}"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_trip" />
@@ -94,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="@{@string/task(user.task[`monday`]), default=今天任务}"
+            android:text="@{@string/task(user.task[`monday`]), default=@string/default_task}"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_colleague" />
