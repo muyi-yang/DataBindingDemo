@@ -66,4 +66,13 @@ public class CelebrityInfo extends BaseObservable {
         this.income = income;
         notifyPropertyChanged(BR.income);
     }
+
+    public void copyObj(CelebrityInfo info){
+        this.name = info.getName();
+        this.income = info.getIncome();
+        this.isRetire = info.isRetire();
+        this.photo = info.getPhoto();
+        this.weight = info.getWeight();
+        notifyPropertyChanged(BR._all);
+    }
 }
