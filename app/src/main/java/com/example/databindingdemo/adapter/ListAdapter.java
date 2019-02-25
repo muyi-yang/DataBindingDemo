@@ -1,4 +1,4 @@
-package com.example.databindingdemo;
+package com.example.databindingdemo.adapter;
 
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableList;

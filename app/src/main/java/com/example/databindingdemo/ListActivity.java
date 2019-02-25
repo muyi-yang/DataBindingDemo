@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.databindingdemo.adapter.ListAdapter;
 import com.example.databindingdemo.bean.CelebrityInfo;
 import com.example.databindingdemo.databinding.ActivityListBinding;
 
