@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, ListActivity.class));
     }
 
+    public void startBindingClass() {
+        startActivity(new Intent(this, BindingClassActivity.class));
+    }
+
     public boolean listLongClick() {
         //长按操作
         return true;

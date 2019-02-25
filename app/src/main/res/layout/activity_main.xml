@@ -24,20 +24,30 @@
             app:layout_constraintLeft_toLeftOf="parent" />
 
         <Button
-            android:id="@+id/btn_binding"
-            app:layout_constraintTop_toBottomOf="@+id/tv_info"
+            android:id="@+id/btn_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{activity::userClick}"
-            android:text="@string/data_binding" />
+            android:text="@string/data_binding"
+            app:layout_constraintTop_toBottomOf="@+id/tv_info" />
+
         <Button
             android:id="@+id/btn_list"
-            app:layout_constraintTop_toBottomOf="@+id/tv_info"
-            app:layout_constraintLeft_toRightOf="@+id/btn_binding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{()->activity.startList()}"
             android:onLongClick="@{()->activity.listLongClick()}"
-            android:text="@string/list_binding" />
+            android:text="@string/list_binding"
+            app:layout_constraintLeft_toRightOf="@+id/btn_data"
+            app:layout_constraintTop_toBottomOf="@+id/tv_info" />
+
+        <Button
+            android:id="@+id/btn_binding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->activity.startBindingClass()}"
+            android:text="@string/binding_class"
+            app:layout_constraintLeft_toRightOf="@+id/btn_list"
+            app:layout_constraintTop_toBottomOf="@+id/tv_info" />
     </android.support.constraint.ConstraintLayout>
 </layout>
