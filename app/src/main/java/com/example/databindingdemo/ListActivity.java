@@ -6,8 +6,11 @@ import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.example.databindingdemo.adapter.ListAdapter;
@@ -49,6 +52,18 @@ public class ListActivity extends AppCompatActivity {
 
         getCelebrityList();
     }
+
+    public RecyclerView.OnScrollListener scrollListener = new RecyclerView.OnScrollListener() {
+        @Override
+        public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+            Log.d("ListActivity", "onScrollStateChanged newState:" + newState);
+        }
+
+        @Override
+        public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+            Log.d("ListActivity", "onScrolled dx:" + dx + ",dy:" + dy);
+        }
+    };
 
     private void getCelebrityList() {
         new Handler().postDelayed(new Runnable() {

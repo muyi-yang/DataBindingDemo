@@ -35,6 +35,7 @@ public class UserActivity extends AppCompatActivity {
 
         binding.setActivity(this);
 
+        binding.setStringResId(R.string.app_name);
     }
 
     public void showSign(View v, UserInfo info) {

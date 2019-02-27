@@ -21,6 +21,10 @@
             type="int" />
 
         <variable
+            name="stringResId"
+            type="int" />
+
+        <variable
             name="activity"
             type="com.example.databindingdemo.UserActivity" />
     </data>
@@ -109,13 +113,22 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_task" />
 
         <ImageView
+            android:id="@+id/iv_test"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/colorPrimary"
             android:visibility="@{Vista.isShow?View.VISIBLE:View.GONE}"
             app:layout_constraintTop_toBottomOf="@+id/btn_show_sign" />
 
-        <include layout="@layout/layout_avatar"
-            bind:resId="@{user.avatarId}"/>
+        <include
+            layout="@layout/layout_avatar"
+            bind:resId="@{user.avatarId}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{stringResId, default=@string/default_string_res}"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/iv_test" />
     </android.support.constraint.ConstraintLayout>
 </layout>
