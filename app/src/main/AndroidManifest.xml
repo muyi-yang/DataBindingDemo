@@ -19,6 +19,7 @@
         <activity android:name=".UserActivity"/>
         <activity android:name=".ListActivity"/>
         <activity android:name=".BindingClassActivity"/>
+        <activity android:name=".AdapterActivity"/>
     </application>
 
 </manifest>

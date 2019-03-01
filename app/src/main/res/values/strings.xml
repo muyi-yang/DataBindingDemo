@@ -20,7 +20,8 @@
 
     <string name="data_binding">数据绑定</string>
     <string name="list_binding">绑定列表</string>
-    <string name="binding_class">绑定类相关</string>
+    <string name="binding_class">绑定类相关</string>v
+    <string name="binding_adapter">绑定适配器</string>
     <string name="show_stub">显示ViewStub</string>
 
     <string name="retire">状态:已退役</string>
