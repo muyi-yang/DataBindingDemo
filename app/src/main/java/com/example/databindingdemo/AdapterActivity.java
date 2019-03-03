@@ -2,6 +2,7 @@ package com.example.databindingdemo;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
@@ -14,6 +15,7 @@ import com.example.databindingdemo.databinding.ActivityAdapterBinding;
 public class AdapterActivity extends AppCompatActivity {
 
     private ActivityAdapterBinding binding;
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,6 +25,20 @@ public class AdapterActivity extends AppCompatActivity {
         binding.setTintColor(getResources().getColorStateList(R.color.colorAccent));
 
         binding.setImgUrl("https://s2.ax1x.com/2019/03/03/kLWJ3D.jpg");
+
+        binding.setSwitchUrl("https://s2.ax1x.com/2019/03/03/kLWJ3D.jpg");
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                binding.setSwitchUrl("https://s2.ax1x.com/2019/03/03/kLOdSA.jpg");
+            }
+        }, 2000);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                binding.setSwitchUrl("https://s2.ax1x.com/2019/03/03/kLOdSA.jpg");
+            }
+        }, 4000);
 
     }
 }

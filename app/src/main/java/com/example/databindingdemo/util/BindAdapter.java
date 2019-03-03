@@ -39,4 +39,12 @@ public class BindAdapter {
             Glide.with(view).load(url).apply(options).into(view);
         }
     }
+
+    @BindingAdapter("app:imageUrl")
+    public static void bindImage(ImageView view, String oldUrl, String newUrl) {
+        if (oldUrl == null || !oldUrl.equals(newUrl)) {
+            Glide.with(view).load(newUrl).into(view);
+        }
+    }
+
 }

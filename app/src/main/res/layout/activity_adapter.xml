@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:abc="http://schemas.android.com/tools">
+    xmlns:abc="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -11,6 +11,10 @@
 
         <variable
             name="imgUrl"
+            type="String" />
+
+        <variable
+            name="switchUrl"
             type="String" />
     </data>
 
@@ -53,12 +57,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/iv_img4"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="260dp"
             android:scaleType="centerCrop"
-            app:error="@{@drawable/error}"
             abc:image="@{imgUrl}"
+            app:error="@{@drawable/error}"
             app:layout_constraintTop_toBottomOf="@+id/iv_img3"
             app:placeholder="@{@drawable/default_mini_avatar}" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:imageUrl="@{switchUrl}"
+            app:layout_constraintTop_toBottomOf="@+id/iv_img4" />
     </android.support.constraint.ConstraintLayout>
 </layout>
