@@ -21,5 +21,8 @@ public class AdapterActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_adapter);
 
         binding.setTintColor(getResources().getColorStateList(R.color.colorAccent));
+
+        binding.setImgUrl("https://s2.ax1x.com/2019/03/03/kLWJ3D.jpg");
+
     }
 }

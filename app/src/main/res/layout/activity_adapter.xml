@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:abc="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="tintColor"
             type="android.content.res.ColorStateList" />
+
+        <variable
+            name="imgUrl"
+            type="String" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -46,5 +51,14 @@
             android:tintMode="multiply"
             app:layout_constraintLeft_toRightOf="@+id/iv_img2"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            app:error="@{@drawable/error}"
+            abc:image="@{imgUrl}"
+            app:layout_constraintTop_toBottomOf="@+id/iv_img3"
+            app:placeholder="@{@drawable/default_mini_avatar}" />
     </android.support.constraint.ConstraintLayout>
 </layout>
