@@ -1,10 +1,12 @@
 package com.example.databindingdemo.util;
 
 import android.databinding.BindingAdapter;
+import android.databinding.BindingConversion;
 import android.databinding.BindingMethod;
 import android.databinding.BindingMethods;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -45,6 +47,11 @@ public class BindAdapter {
         if (oldUrl == null || !oldUrl.equals(newUrl)) {
             Glide.with(view).load(newUrl).into(view);
         }
+    }
+
+    @BindingConversion
+    public static int convertBooleanToVisible(boolean visible) {
+        return visible ? View.VISIBLE : View.GONE;
     }
 
 }

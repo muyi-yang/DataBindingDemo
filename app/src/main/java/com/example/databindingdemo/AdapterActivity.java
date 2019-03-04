@@ -45,6 +45,13 @@ public class AdapterActivity extends AppCompatActivity {
 
         binding.setAttachListener(attached);
         binding.setDetachListener(detached);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                binding.setIsShow(true);
+            }
+        }, 1000);
     }
 
     private ViewBindingAdapter.OnViewAttachedToWindow attached = new ViewBindingAdapter.OnViewAttachedToWindow() {

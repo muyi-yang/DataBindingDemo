@@ -24,6 +24,10 @@
         <variable
             name="detachListener"
             type="android.databinding.adapters.ViewBindingAdapter.OnViewDetachedFromWindow" />
+
+        <variable
+            name="isShow"
+            type="boolean" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -50,6 +54,7 @@
             android:src="@drawable/default_mini_avatar"
             android:tint="@{tintColor, default=@color/colorPrimary}"
             android:tintMode="screen"
+            android:visibility="@{isShow}"
             app:layout_constraintLeft_toRightOf="@+id/iv_img1"
             app:layout_constraintTop_toTopOf="parent" />
 
