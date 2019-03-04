@@ -1,10 +1,13 @@
 package com.example.databindingdemo;
 
 import android.databinding.DataBindingUtil;
+import android.databinding.adapters.ViewBindingAdapter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.databindingdemo.databinding.ActivityAdapterBinding;
 
@@ -40,5 +43,25 @@ public class AdapterActivity extends AppCompatActivity {
             }
         }, 4000);
 
+        binding.setAttachListener(attached);
+        binding.setDetachListener(detached);
+    }
+
+    private ViewBindingAdapter.OnViewAttachedToWindow attached = new ViewBindingAdapter.OnViewAttachedToWindow() {
+        @Override
+        public void onViewAttachedToWindow(View v) {
+            toast("视图被添加到窗口中");
+        }
+    };
+
+    private ViewBindingAdapter.OnViewDetachedFromWindow detached = new ViewBindingAdapter.OnViewDetachedFromWindow() {
+        @Override
+        public void onViewDetachedFromWindow(View v) {
+            toast("视图从窗口中被移除");
+        }
+    };
+
+    private void toast(String content){
+        Toast.makeText(this, content, Toast.LENGTH_LONG).show();
     }
 }

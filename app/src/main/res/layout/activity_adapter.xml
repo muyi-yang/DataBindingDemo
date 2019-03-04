@@ -16,6 +16,14 @@
         <variable
             name="switchUrl"
             type="String" />
+
+        <variable
+            name="attachListener"
+            type="android.databinding.adapters.ViewBindingAdapter.OnViewAttachedToWindow" />
+
+        <variable
+            name="detachListener"
+            type="android.databinding.adapters.ViewBindingAdapter.OnViewDetachedFromWindow" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -66,9 +74,13 @@
             app:layout_constraintTop_toBottomOf="@+id/iv_img3"
             app:placeholder="@{@drawable/default_mini_avatar}" />
 
+        <!--想了解 android:onViewAttachedToWindow 和 android:onViewDetachedFromWindow 的适配器，
+        请查看 ViewBindingAdapter 源码-->
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:onViewAttachedToWindow="@{attachListener}"
+            android:onViewDetachedFromWindow="@{detachListener}"
             app:imageUrl="@{switchUrl}"
             app:layout_constraintTop_toBottomOf="@+id/iv_img4" />
     </android.support.constraint.ConstraintLayout>
