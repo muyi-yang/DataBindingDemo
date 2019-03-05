@@ -46,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, AdapterActivity.class));
     }
 
+    public void startBindingTwoway() {
+        startActivity(new Intent(this, TwowayActivity.class));
+    }
+
     public boolean listLongClick() {
         //长按操作
         return true;

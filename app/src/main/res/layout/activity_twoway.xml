@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="activity"
+            type="com.example.databindingdemo.TwowayActivity" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_control"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="@{@string/input_string(String.valueOf(activity.isTwowayEnable),activity.inputTxt), default=@string/input_string}"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={activity.inputTxt}"
+            android:visibility="@{activity.isTwowayEnable?View.VISIBLE:View.INVISIBLE}"
+            app:layout_constraintTop_toBottomOf="@+id/tv_control" />
+
+        <EditText
+            android:id="@+id/et_input_twoway"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{activity.inputTxt}"
+            android:visibility="@{!activity.isTwowayEnable?View.VISIBLE:View.INVISIBLE}"
+            app:layout_constraintTop_toBottomOf="@+id/tv_control" />
+
+        <CheckBox
+            android:id="@+id/cb_twoway_enable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@={activity.isTwowayEnable}"
+            android:text="@string/twoway_enable"
+            app:layout_constraintTop_toBottomOf="@+id/et_input" />
+    </android.support.constraint.ConstraintLayout>
+</layout>
