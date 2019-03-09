@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:padding="5dp"
-            android:text="@{@string/input_string(String.valueOf(activity.isTwowayEnable),activity.inputTxt), default=@string/input_string}"
+            android:text="@{@string/input_string(String.valueOf(activity.isTwowayEnable),activity.inputTxt,activity.progress), default=@string/input_string}"
             android:textColor="@android:color/holo_green_dark"
             android:textSize="18sp" />
 
@@ -48,5 +48,24 @@
             android:checked="@={activity.isTwowayEnable}"
             android:text="@string/twoway_enable"
             app:layout_constraintTop_toBottomOf="@+id/et_input" />
+
+        <com.xw.repo.BubbleSeekBar
+            android:id="@+id/bsb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:bsb_auto_adjust_section_mark="true"
+            app:bsb_bubble_color="@color/colorPrimary"
+            app:bsb_bubble_text_color="@color/colorPrimaryDark"
+            app:bsb_max="8"
+            app:bsb_min="0"
+            app:progress="@={activity.progress}"
+            app:bsb_second_track_color="@color/colorAccent"
+            app:bsb_section_count="8"
+            app:bsb_section_text_position="below_section_mark"
+            app:bsb_show_section_mark="true"
+            app:bsb_touch_to_seek="true"
+            app:bsb_track_color="@color/colorPrimary"
+            app:layout_constraintTop_toBottomOf="@+id/cb_twoway_enable" />
     </android.support.constraint.ConstraintLayout>
 </layout>

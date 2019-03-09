@@ -4,6 +4,8 @@ import android.databinding.BindingAdapter;
 import android.databinding.BindingConversion;
 import android.databinding.BindingMethod;
 import android.databinding.BindingMethods;
+import android.databinding.InverseBindingAdapter;
+import android.databinding.InverseBindingListener;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.xw.repo.BubbleSeekBar;
 
 
 /**
@@ -54,4 +57,36 @@ public class BindAdapter {
         return visible ? View.VISIBLE : View.GONE;
     }
 
+    //因为 setter 方法自动匹配所以无需适配器
+//    @BindingAdapter("app:progress")
+//    public static void setProgress(BubbleSeekBar seekBar, int progress){
+//        seekBar.setProgress(progress);
+//    }
+
+    @InverseBindingAdapter(attribute = "app:progress", event = "app:progressChanged")
+    public static int getProgress(BubbleSeekBar seekBar) {
+        return seekBar.getProgress();
+    }
+
+    @BindingAdapter("app:progressChanged")
+    public static void setProgressListener(BubbleSeekBar seekBar,
+                                           final InverseBindingListener listener) {
+        seekBar.setOnProgressChangedListener(new BubbleSeekBar.OnProgressChangedListener() {
+            @Override
+            public void onProgressChanged(BubbleSeekBar bubbleSeekBar, int progress,
+                                          float progressFloat, boolean fromUser) {
+                listener.onChange();
+            }
+
+            @Override
+            public void getProgressOnActionUp(BubbleSeekBar bubbleSeekBar, int progress,
+                                              float progressFloat) {
+            }
+
+            @Override
+            public void getProgressOnFinally(BubbleSeekBar bubbleSeekBar, int progress,
+                                             float progressFloat, boolean fromUser) {
+            }
+        });
+    }
 }
