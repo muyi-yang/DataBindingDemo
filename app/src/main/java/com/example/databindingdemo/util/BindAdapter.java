@@ -60,7 +60,9 @@ public class BindAdapter {
     //因为 setter 方法自动匹配所以无需适配器
 //    @BindingAdapter("app:progress")
 //    public static void setProgress(BubbleSeekBar seekBar, int progress){
-//        seekBar.setProgress(progress);
+//        if(seekBar.getProgress() != progress){
+//            seekBar.setProgress(progress);
+//        }
 //    }
 
     @InverseBindingAdapter(attribute = "app:progress", event = "app:progressChanged")
@@ -89,4 +91,29 @@ public class BindAdapter {
             }
         });
     }
+
+//    合并的写法
+//    @BindingAdapter(value = {"app:progress", "app:progressChanged"}, requireAll = false)
+//    public static void setProgress(BubbleSeekBar seekBar, int progress, final InverseBindingListener listener) {
+//        if(seekBar.getProgress() != progress){
+//            seekBar.setProgress(progress);
+//        }
+//        seekBar.setOnProgressChangedListener(new BubbleSeekBar.OnProgressChangedListener() {
+//            @Override
+//            public void onProgressChanged(BubbleSeekBar bubbleSeekBar, int progress,
+//                                          float progressFloat, boolean fromUser) {
+//                listener.onChange();
+//            }
+//
+//            @Override
+//            public void getProgressOnActionUp(BubbleSeekBar bubbleSeekBar, int progress,
+//                                              float progressFloat) {
+//            }
+//
+//            @Override
+//            public void getProgressOnFinally(BubbleSeekBar bubbleSeekBar, int progress,
+//                                             float progressFloat, boolean fromUser) {
+//            }
+//        });
+//    }
 }

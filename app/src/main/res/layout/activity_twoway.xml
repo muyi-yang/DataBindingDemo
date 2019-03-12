@@ -59,13 +59,32 @@
             app:bsb_bubble_text_color="@color/colorPrimaryDark"
             app:bsb_max="8"
             app:bsb_min="0"
-            app:progress="@={activity.progress}"
             app:bsb_second_track_color="@color/colorAccent"
             app:bsb_section_count="8"
             app:bsb_section_text_position="below_section_mark"
             app:bsb_show_section_mark="true"
             app:bsb_touch_to_seek="true"
             app:bsb_track_color="@color/colorPrimary"
-            app:layout_constraintTop_toBottomOf="@+id/cb_twoway_enable" />
+            app:layout_constraintTop_toBottomOf="@+id/cb_twoway_enable"
+            app:progress="@={activity.progress}" />
+
+        <com.example.databindingdemo.view.MySeekBar
+            android:id="@+id/my_seek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:bsb_auto_adjust_section_mark="true"
+            app:bsb_bubble_color="@color/colorAccent"
+            app:bsb_bubble_text_color="@color/colorPrimaryDark"
+            app:bsb_max="8"
+            app:bsb_min="0"
+            app:bsb_second_track_color="@color/colorPrimary"
+            app:bsb_section_count="8"
+            app:bsb_section_text_position="below_section_mark"
+            app:bsb_show_section_mark="true"
+            app:bsb_touch_to_seek="true"
+            app:bsb_track_color="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@+id/bsb"
+            app:progress="@={activity.progress}" />
     </android.support.constraint.ConstraintLayout>
 </layout>
