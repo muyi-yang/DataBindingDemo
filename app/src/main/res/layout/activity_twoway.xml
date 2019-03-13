@@ -9,6 +9,8 @@
             type="com.example.databindingdemo.TwowayActivity" />
 
         <import type="android.view.View" />
+
+        <import type="com.example.databindingdemo.util.Converter" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -21,7 +23,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:padding="5dp"
-            android:text="@{@string/input_string(String.valueOf(activity.isTwowayEnable),activity.inputTxt,activity.progress), default=@string/input_string}"
+            android:text="@{@string/input_string(String.valueOf(activity.isTwowayEnable),activity.inputTxt,activity.progress,Converter.dateToString(activity.curTime),activity.curTime), default=@string/input_string}"
             android:textColor="@android:color/holo_green_dark"
             android:textSize="18sp" />
 
@@ -86,5 +88,23 @@
             app:bsb_track_color="@color/colorAccent"
             app:layout_constraintTop_toBottomOf="@+id/bsb"
             app:progress="@={activity.progress}" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:textSize="16sp"
+            android:text="@={Converter.dateToString(activity.curTime)}"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintTop_toBottomOf="@+id/my_seek" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->activity.setDate()}"
+            android:text="@string/date_time"
+            app:layout_constraintTop_toBottomOf="@+id/tv_time" />
     </android.support.constraint.ConstraintLayout>
 </layout>
