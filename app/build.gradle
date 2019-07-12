@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -34,4 +37,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 
     implementation 'com.xw.repo:bubbleseekbar:3.20-lite'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    kapt "androidx.databinding:databinding-compiler:3.3.1"
 }
